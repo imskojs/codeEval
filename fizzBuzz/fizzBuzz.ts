@@ -1,33 +1,34 @@
 import fs = require('fs');
-var answer: string;
-fs.readFileSync(process.argv[2]).toString().split('\n').forEach(function(line: string) {
-  if (line !== '') {
-    var letters = line.split(' ');
-    var fer = Number(letters[0]);
-    var ber = Number(letters[1]);
-    var length = Number(letters[2]);
-    var numbers: number[] = [];
-    var i: number;
-    for (i = 1; i <= length; i++) {
-      numbers.push(i);
-    }
-    var results: (string | number)[] = [];
-    var numbersLength: number = numbers.length;
-    for (i = 0; i < numbersLength; i++) {
-      var number = numbers[i];
-      if ((number % fer) === 0 && (number % ber) === 0) {
-        results.push('FB');
-      } else if (number % fer === 0) {
-        results.push('F');
-      } else if (number % ber === 0) {
-        results.push('B');
-      } else {
-        results.push(number);
+class FizzBuzz {
+  static answer(input: string){
+    let source: string[] = fs.readFileSync(input).toString().split('\n')
+    for(let line of source){
+      if(line !== ''){
+        let letters: string[] = line.split(' ');
+        let fer: number = Number(letters[0]);
+        let ber: number = Number(letters[1]);
+        let length: number = Number(letters[2]);
+        let numbers: number[] = [];
+        for (let i: number = 1; i <= length; i++){
+          numbers.push(i);
+        }
+        let results: string[] = [];
+        for (let i: number = 0; i < numbers.length; i++) {
+          let number = numbers[i];
+          if ((number % fer) === 0 && (number % ber) === 0) {
+            results.push('FB');
+          } else if (number % fer === 0) {
+            results.push('F');
+          } else if (number % ber === 0) {
+            results.push('B');
+          } else {
+            results.push(String(number));
+          }
+        }
+        console.log(results.join(' '));
       }
     }
-    var resultText = results.join(' ');
-    resultText = resultText;
-    answer = resultText;
   }
-  console.log(answer);
-});
+}
+
+FizzBuzz.answer(process.argv[2]);
