@@ -1,4 +1,5 @@
 import fs = require('fs')
+
 class FizzBuzz {
   static answer(input: string): void {
     let source: string[] = fs.readFileSync(input).toString().split('\n')
