@@ -3,7 +3,7 @@ import fs = require('fs')
 interface AnswerType {
   challenge: string
   rawData: string
-  lines: Array<string>
+  questions: Array<string>
   answers: Array<string>
   setRawData(filename: string): void
   setAnswers(): void
@@ -24,7 +24,7 @@ class FizzBuzz implements AnswerType, Lineable {
     Output: 0 1 F B F 5
   `
   rawData: string
-  lines: Array<string> = []
+  questions: Array<string> = []
   answers: Array<string> = []
 
   setRawData(filename: string): void {
@@ -32,14 +32,14 @@ class FizzBuzz implements AnswerType, Lineable {
   }
 
   setLines(): void {
-    this.lines = this.rawData.split('\n')
+    this.questions = this.rawData.split('\n')
   }
 
   setAnswers(): void {
-    this.lines.forEach((line: string) => {
+    this.questions.forEach((question: string) => {
 
-      if(line !== ''){
-        let letters: string[] = line.split(' ')
+      if(question !== ''){
+        let letters: string[] = question.split(' ')
         let fer: number = Number(letters[0])
         let ber: number = Number(letters[1])
         let length: number = Number(letters[2])

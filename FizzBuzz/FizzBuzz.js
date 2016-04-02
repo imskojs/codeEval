@@ -3,20 +3,20 @@ var fs = require('fs');
 var FizzBuzz = (function () {
     function FizzBuzz() {
         this.challenge = "\n    Input: 2 3 5\n    Process: for range 0 to <5> if it is divisible by <2> print F\n      if it is divisible by <3> print B\n      if it is divisible by <2> and <5> print FB\n      else print current number in range\n    Output: 0 1 F B F 5\n  ";
-        this.lines = [];
+        this.questions = [];
         this.answers = [];
     }
     FizzBuzz.prototype.setRawData = function (filename) {
         this.rawData = fs.readFileSync(filename).toString();
     };
     FizzBuzz.prototype.setLines = function () {
-        this.lines = this.rawData.split('\n');
+        this.questions = this.rawData.split('\n');
     };
     FizzBuzz.prototype.setAnswers = function () {
         var _this = this;
-        this.lines.forEach(function (line) {
-            if (line !== '') {
-                var letters = line.split(' ');
+        this.questions.forEach(function (question) {
+            if (question !== '') {
+                var letters = question.split(' ');
                 var fer = Number(letters[0]);
                 var ber = Number(letters[1]);
                 var length_1 = Number(letters[2]);
