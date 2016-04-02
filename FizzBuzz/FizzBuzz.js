@@ -2,11 +2,19 @@
 var fs = require('fs');
 var FizzBuzz = (function () {
     function FizzBuzz() {
+        this.challenge = "\n    Input: 2 3 5\n    Process: for range 0 to <5> if it is divisible by <2> print F\n      if it is divisible by <3> print B\n      if it is divisible by <2> and <5> print FB\n      else print current number in range\n    Output: 0 1 F B F 5\n  ";
+        this.lines = [];
+        this.answers = [];
     }
-    FizzBuzz.answer = function (input) {
-        var source = fs.readFileSync(input).toString().split('\n');
-        for (var _i = 0, source_1 = source; _i < source_1.length; _i++) {
-            var line = source_1[_i];
+    FizzBuzz.prototype.setRawData = function (filename) {
+        this.rawData = fs.readFileSync(filename).toString();
+    };
+    FizzBuzz.prototype.setLines = function () {
+        this.lines = this.rawData.split('\n');
+    };
+    FizzBuzz.prototype.setAnswers = function () {
+        var _this = this;
+        this.lines.forEach(function (line) {
             if (line !== '') {
                 var letters = line.split(' ');
                 var fer = Number(letters[0]);
@@ -32,10 +40,19 @@ var FizzBuzz = (function () {
                         results.push(String(number));
                     }
                 }
-                console.log(results.join(' '));
+                _this.answers.push(results.join(' '));
             }
-        }
+        });
+    };
+    FizzBuzz.prototype.printAnswers = function () {
+        this.answers.forEach(function (answer) {
+            console.log(answer);
+        });
     };
     return FizzBuzz;
 }());
-FizzBuzz.answer(process.argv[2]);
+var fizzBuzz = new FizzBuzz();
+fizzBuzz.setRawData(process.argv[2]);
+fizzBuzz.setLines();
+fizzBuzz.setAnswers();
+fizzBuzz.printAnswers();
