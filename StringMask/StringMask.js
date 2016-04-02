@@ -2,13 +2,21 @@
 var fs = require('fs');
 var StringMask = (function () {
     function StringMask() {
+        this.challenge = "\n    Input: hello 11001\n    Process: Uppercase characters that have corresponing binary value of 1\n    OutPut: HEllO\n  ";
+        this.questions = [];
+        this.answers = [];
     }
-    StringMask.answer = function (input) {
-        var source = fs.readFileSync(input).toString().split('\n');
-        for (var _i = 0, source_1 = source; _i < source_1.length; _i++) {
-            var line = source_1[_i];
-            if (line !== '') {
-                var splitted = line.split(' ');
+    StringMask.prototype.setRawData = function (filename) {
+        this.rawData = fs.readFileSync(filename).toString();
+    };
+    StringMask.prototype.setLines = function () {
+        this.questions = this.rawData.split('\n');
+    };
+    StringMask.prototype.setAnswers = function () {
+        var _this = this;
+        this.questions.forEach(function (question) {
+            if (question !== '') {
+                var splitted = question.split(' ');
                 var word = splitted[0];
                 var binary = splitted[1];
                 var answer = '';
@@ -20,10 +28,19 @@ var StringMask = (function () {
                         answer += word[i];
                     }
                 }
-                console.log(answer);
+                _this.answers.push(answer);
             }
-        }
+        });
+    };
+    StringMask.prototype.printAnswers = function () {
+        this.answers.forEach(function (answer) {
+            console.log(answer);
+        });
     };
     return StringMask;
 }());
-StringMask.answer(process.argv[2]);
+var stringMask = new StringMask();
+stringMask.setRawData(process.argv[2]);
+stringMask.setLines();
+stringMask.setAnswers();
+stringMask.printAnswers();

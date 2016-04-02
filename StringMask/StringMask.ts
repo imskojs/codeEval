@@ -1,11 +1,40 @@
 import fs = require('fs')
 
-class StringMask {
-  static answer(input: string): void {
-    let source: string[] = fs.readFileSync(input).toString().split('\n')
-    for (let line of source) {
-      if (line !== '') {
-        let splitted: string[] = line.split(' ')
+interface AnswerType {
+  challenge: string
+  rawData: string
+  questions: Array<string>
+  answers: Array<string>
+  setRawData(filename: string): void
+  setAnswers(): void
+  printAnswers(): void
+}
+
+interface Lineable {
+  setLines(): void
+}
+
+class StringMask implements AnswerType, Lineable {
+  challenge: string = `
+    Input: hello 11001
+    Process: Uppercase characters that have corresponing binary value of 1
+    OutPut: HEllO
+  `
+  rawData: string
+  questions: Array<string> = []
+  answers: Array<string> = []
+  setRawData(filename: string): void {
+    this.rawData = fs.readFileSync(filename).toString()
+  }
+  setLines(): void {
+    this.questions = this.rawData.split('\n')
+  }
+
+  setAnswers(): void {
+
+    this.questions.forEach((question: string) => {
+      if (question !== '') {
+        let splitted: string[] = question.split(' ')
         let word: string = splitted[0];
         let binary: string = splitted[1];
         let answer: string = '';
@@ -16,10 +45,22 @@ class StringMask {
             answer += word[i]
           }
         }
-        console.log(answer)
+        this.answers.push(answer)
       }
-    }
+    })
+
   }
+
+  printAnswers(): void {
+    this.answers.forEach((answer: string) => {
+      console.log(answer)
+    })
+  }
+
 }
 
-StringMask.answer(process.argv[2])
+let stringMask: StringMask = new StringMask()
+stringMask.setRawData(process.argv[2])
+stringMask.setLines()
+stringMask.setAnswers()
+stringMask.printAnswers()
