@@ -1,0 +1,1 @@
+import { SumOfPrimes } from "../SumOfPrimes/SumOfPrimes";

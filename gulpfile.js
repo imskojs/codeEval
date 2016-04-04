@@ -17,11 +17,9 @@ gulp.task('default', function () {
       patterns: [{
           match: /import { (.*) } from "\.\.\/(.*)";/g,
           replacement: function(match, moduleName, modulePath){
-            console.log("match :::\n", match);
             var wholeString = fs.readFileSync(modulePath + '.ts', 'utf8');
             var reg = new RegExp('export class ' + moduleName + '[\\s\\S]+^}', 'm');
             var result = wholeString.match(reg);
-            console.log("result :::\n", result);
             return result[0];
           }
         }
