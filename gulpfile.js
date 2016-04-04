@@ -4,21 +4,17 @@ var fs = require('fs');
 var ts = require('gulp-typescript');
 
 var paths = {
-  // ts: ['./Test/Test.ts']
   ts: [
     './**/*.ts', 
-    '!./ZZZcompiled/**/*.ts',
     '!./node_modules/**/*.ts',
     '!./typings/browser.d.ts',
     '!./typings/browser/**/*.ts'
-
   ]
 };
 gulp.task('default', function () {
   gulp.src(paths.ts)
     .pipe(replace({
-      patterns: [
-        {
+      patterns: [{
           match: /import { (.*) } from "\.\.\/(.*)";/g,
           replacement: function(match, moduleName, modulePath){
             console.log("match :::\n", match);
