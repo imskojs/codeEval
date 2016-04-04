@@ -1,6 +1,6 @@
 import fs = require('fs');
 
-class SumOfPrimes {
+export class SumOfPrimes {
 
   challenge: string = `
     Input: none
@@ -10,25 +10,36 @@ class SumOfPrimes {
   rawData: number;
   primeNumbers: Array<number> = [];
   answer: number;
+
   constructor(numOfPrimeNumbers: number) {
     this.rawData = numOfPrimeNumbers
   }
+
   setPrimeNumbers(): void{
     let num = 2;
     while (this.primeNumbers.length < this.rawData){
-      let isPrime = true;
-      for (let i = 2; i <= num; i += 1){
-        if(num % i === 0 && i !== num){
-          isPrime = false;
-          break;
-        }
-      }
-      if(isPrime === true){
+      if(this.isPrimeNumber(num)){
         this.primeNumbers.push(num)
       }
       num += 1
     }
   }
+
+  isPrimeNumber(rawNumber: number): boolean {
+    let isPrime: boolean = true;
+    for (let i = 2; i < rawNumber; i += 1){
+      if(rawNumber % i === 0){
+        isPrime = false;
+        break;
+      }
+    }
+    if(isPrime === true){
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   setAnswer(){
     this.answer = this.primeNumbers.reduce((prev: number, curr: number) => {
       return prev + curr;

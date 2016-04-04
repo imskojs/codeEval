@@ -1,3 +1,4 @@
+// import fs = require('fs');
 "use strict";
 var SumOfPrimes = (function () {
     function SumOfPrimes(numOfPrimeNumbers) {
@@ -8,17 +9,25 @@ var SumOfPrimes = (function () {
     SumOfPrimes.prototype.setPrimeNumbers = function () {
         var num = 2;
         while (this.primeNumbers.length < this.rawData) {
-            var isPrime = true;
-            for (var i = 2; i <= num; i += 1) {
-                if (num % i === 0 && i !== num) {
-                    isPrime = false;
-                    break;
-                }
-            }
-            if (isPrime === true) {
+            if (this.isPrimeNumber(num)) {
                 this.primeNumbers.push(num);
             }
             num += 1;
+        }
+    };
+    SumOfPrimes.prototype.isPrimeNumber = function (rawNumber) {
+        var isPrime = true;
+        for (var i = 2; i < rawNumber; i += 1) {
+            if (rawNumber % i === 0) {
+                isPrime = false;
+                break;
+            }
+        }
+        if (isPrime === true) {
+            return true;
+        }
+        else {
+            return false;
         }
     };
     SumOfPrimes.prototype.setAnswer = function () {
@@ -31,6 +40,7 @@ var SumOfPrimes = (function () {
     };
     return SumOfPrimes;
 }());
+exports.SumOfPrimes = SumOfPrimes;
 var sumOfPrimes = new SumOfPrimes(1000);
 sumOfPrimes.setPrimeNumbers();
 sumOfPrimes.setAnswer();
