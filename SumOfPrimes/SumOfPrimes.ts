@@ -4,7 +4,8 @@ export class SumOfPrimes {
 
   challenge: string = `
     Input: none
-    Process: print sum of 1000 prime numbers
+    Process: print sum of 1000 prime numbers, prime number is an integer bigger than 1
+      that is only divisible by 1 and itself
     Output: 3682913
   `;
   rawData: number;
@@ -16,7 +17,7 @@ export class SumOfPrimes {
   }
 
   setPrimeNumbers(): void{
-    let num = 2;
+    let num = 2; // 1 is not a prime number
     while (this.primeNumbers.length < this.rawData){
       if(this.isPrimeNumber(num)){
         this.primeNumbers.push(num)
@@ -26,18 +27,12 @@ export class SumOfPrimes {
   }
 
   isPrimeNumber(rawNumber: number): boolean {
-    let isPrime: boolean = true;
     for (let i = 2; i < rawNumber; i += 1){
       if(rawNumber % i === 0){
-        isPrime = false;
-        break;
+        return false;
       }
     }
-    if(isPrime === true){
-      return true;
-    } else {
-      return false;
-    }
+    return true;
   }
 
   setAnswer(){

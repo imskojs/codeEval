@@ -1,13 +1,12 @@
-// import fs = require('fs');
 "use strict";
 var SumOfPrimes = (function () {
     function SumOfPrimes(numOfPrimeNumbers) {
-        this.challenge = "\n    Input: none\n    Process: print sum of 1000 prime numbers\n    Output: 3682913\n  ";
+        this.challenge = "\n    Input: none\n    Process: print sum of 1000 prime numbers, prime number is an integer bigger than 1\n      that is only divisible by 1 and itself\n    Output: 3682913\n  ";
         this.primeNumbers = [];
         this.rawData = numOfPrimeNumbers;
     }
     SumOfPrimes.prototype.setPrimeNumbers = function () {
-        var num = 2;
+        var num = 2; // 1 is not a prime number
         while (this.primeNumbers.length < this.rawData) {
             if (this.isPrimeNumber(num)) {
                 this.primeNumbers.push(num);
@@ -16,19 +15,12 @@ var SumOfPrimes = (function () {
         }
     };
     SumOfPrimes.prototype.isPrimeNumber = function (rawNumber) {
-        var isPrime = true;
         for (var i = 2; i < rawNumber; i += 1) {
             if (rawNumber % i === 0) {
-                isPrime = false;
-                break;
+                return false;
             }
         }
-        if (isPrime === true) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return true;
     };
     SumOfPrimes.prototype.setAnswer = function () {
         this.answer = this.primeNumbers.reduce(function (prev, curr) {
