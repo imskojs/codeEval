@@ -15,6 +15,7 @@ gulp.task('default', function () {
   gulp.src(paths.ts)
     .pipe(replace({
       patterns: [{
+          // currently only import, export class CLASSNAME with out implementation.
           match: /import { (.*) } from "\.\.\/(.*)";/g,
           replacement: function(match, moduleName, modulePath){
             var wholeString = fs.readFileSync(modulePath + '.ts', 'utf8');
