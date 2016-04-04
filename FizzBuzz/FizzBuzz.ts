@@ -1,20 +1,20 @@
 import fs = require('fs')
 
-interface AnswerType {
-  challenge: string
-  rawData: string
-  questions: Array<string>
-  answers: Array<string>
-  setRawData(filename: string): void
-  setAnswers(): void
-  printAnswers(): void
-}
+// interface AnswerType {
+//   challenge: string
+//   rawData: string
+//   questions: Array<string>
+//   answers: Array<string>
+//   setRawData(filename: string): void
+//   setAnswers(): void
+//   printAnswers(): void
+// }
 
-interface Lineable {
-  setLines(): void
-}
+// interface Lineable {
+//   setLines(): void
+// }
 
-class FizzBuzz implements AnswerType, Lineable {
+export class FizzBuzz {
   challenge: string = `
     Input: 2 3 5
     Process: for range 0 to <5> if it is divisible by <2> print F

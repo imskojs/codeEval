@@ -1,5 +1,17 @@
 "use strict";
 var fs = require('fs');
+// interface AnswerType {
+//   challenge: string
+//   rawData: string
+//   questions: Array<string>
+//   answers: Array<string>
+//   setRawData(filename: string): void
+//   setAnswers(): void
+//   printAnswers(): void
+// }
+// interface Lineable {
+//   setLines(): void
+// }
 var StringMask = (function () {
     function StringMask() {
         this.challenge = "\n    Input: hello 11001\n    Process: Uppercase characters that have corresponing binary value of 1\n    OutPut: HEllO\n  ";

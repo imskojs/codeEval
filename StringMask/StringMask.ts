@@ -1,20 +1,20 @@
 import fs = require('fs')
 
-interface AnswerType {
-  challenge: string
-  rawData: string
-  questions: Array<string>
-  answers: Array<string>
-  setRawData(filename: string): void
-  setAnswers(): void
-  printAnswers(): void
-}
+// interface AnswerType {
+//   challenge: string
+//   rawData: string
+//   questions: Array<string>
+//   answers: Array<string>
+//   setRawData(filename: string): void
+//   setAnswers(): void
+//   printAnswers(): void
+// }
 
-interface Lineable {
-  setLines(): void
-}
+// interface Lineable {
+//   setLines(): void
+// }
 
-class StringMask implements AnswerType, Lineable {
+class StringMask {
   challenge: string = `
     Input: hello 11001
     Process: Uppercase characters that have corresponing binary value of 1

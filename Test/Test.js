@@ -1,17 +1,5 @@
 "use strict";
 var fs = require('fs');
-// interface AnswerType {
-//   challenge: string
-//   rawData: string
-//   questions: Array<string>
-//   answers: Array<string>
-//   setRawData(filename: string): void
-//   setAnswers(): void
-//   printAnswers(): void
-// }
-// interface Lineable {
-//   setLines(): void
-// }
 var FizzBuzz = (function () {
     function FizzBuzz() {
         this.challenge = "\n    Input: 2 3 5\n    Process: for range 0 to <5> if it is divisible by <2> print F\n      if it is divisible by <3> print B\n      if it is divisible by <2> and <5> print FB\n      else print current number in range\n    Output: 0 1 F B F 5\n  ";
@@ -64,8 +52,37 @@ var FizzBuzz = (function () {
     return FizzBuzz;
 }());
 exports.FizzBuzz = FizzBuzz;
-var fizzBuzz = new FizzBuzz();
-fizzBuzz.setRawData(process.argv[2]);
-fizzBuzz.setLines();
-fizzBuzz.setAnswers();
-fizzBuzz.printAnswers();
+var SumOfPrimes = (function () {
+    function SumOfPrimes(numOfPrimeNumbers) {
+        this.challenge = "\n    Input: none\n    Process: print sum of 1000 prime numbers, prime number is an integer bigger than 1\n      that is only divisible by 1 and itself\n    Output: 3682913\n  ";
+        this.primeNumbers = [];
+        this.rawData = numOfPrimeNumbers;
+    }
+    SumOfPrimes.prototype.setPrimeNumbers = function () {
+        var num = 2; // 1 is not a prime number
+        while (this.primeNumbers.length < this.rawData) {
+            if (this.isPrimeNumber(num)) {
+                this.primeNumbers.push(num);
+            }
+            num += 1;
+        }
+    };
+    SumOfPrimes.prototype.isPrimeNumber = function (rawNumber) {
+        for (var i = 2; i < rawNumber; i += 1) {
+            if (rawNumber % i === 0) {
+                return false;
+            }
+        }
+        return true;
+    };
+    SumOfPrimes.prototype.setAnswer = function () {
+        this.answer = this.primeNumbers.reduce(function (prev, curr) {
+            return prev + curr;
+        }, 0);
+    };
+    SumOfPrimes.prototype.printAnswer = function () {
+        console.log(this.answer);
+    };
+    return SumOfPrimes;
+}());
+exports.SumOfPrimes = SumOfPrimes;

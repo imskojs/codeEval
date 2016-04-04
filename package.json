@@ -1,0 +1,32 @@
+{
+  "name": "code-eval",
+  "version": "1.0.0",
+  "description": "toy problems in typescript",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/imskojs/codeEval.git"
+  },
+  "keywords": [
+    "typescript",
+    "toy",
+    "toy",
+    "problem",
+    "code"
+  ],
+  "author": "Seunghoon Ko",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/imskojs/codeEval/issues"
+  },
+  "homepage": "https://github.com/imskojs/codeEval#readme",
+  "devDependencies": {
+    "bluebird": "^3.3.4",
+    "gulp": "^3.9.1",
+    "gulp-replace-task": "^0.11.0",
+    "gulp-typescript": "^2.12.2"
+  }
+}
