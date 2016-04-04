@@ -21,7 +21,7 @@ class PrimePalindrome {
       }
     }
   }
-  printLargestPrimePalindromes(): void {
+  printLargestPrimePalindrome(): void {
     console.log(this.primePalindromes[this.primePalindromes.length - 1]);
   }
   isPrimeNumber(rawNumber: number): boolean {
@@ -50,4 +50,4 @@ class PrimePalindrome {
 
 let primePalindrome: PrimePalindrome = new PrimePalindrome(1000);
 primePalindrome.setPrimePalindromes();
-primePalindrome.printLargestPrimePalindromes();
+primePalindrome.printLargestPrimePalindrome();

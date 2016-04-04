@@ -12,7 +12,7 @@ var PrimePalindrome = (function () {
             }
         }
     };
-    PrimePalindrome.prototype.printLargestPrimePalindromes = function () {
+    PrimePalindrome.prototype.printLargestPrimePalindrome = function () {
         console.log(this.primePalindromes[this.primePalindromes.length - 1]);
     };
     PrimePalindrome.prototype.isPrimeNumber = function (rawNumber) {
@@ -41,4 +41,4 @@ var PrimePalindrome = (function () {
 }());
 var primePalindrome = new PrimePalindrome(1000);
 primePalindrome.setPrimePalindromes();
-primePalindrome.printLargestPrimePalindromes();
+primePalindrome.printLargestPrimePalindrome();
