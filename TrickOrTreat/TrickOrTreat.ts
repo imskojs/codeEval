@@ -27,8 +27,8 @@ export class TrickOrTreat {
 
         let totalKidCount: number = vampireCount + zombieCount + witchCount;
         let totalCandieCount: number = (vampireCount * 3 + zombieCount * 4 + witchCount * 5) * houseCount;
-        let cadiesPerPerson: number = totalCandieCount / totalKidCount;
-        this.candiesPerPerson.push(cadiesPerPerson);
+        let candiesPerPerson: number = totalCandieCount / totalKidCount;
+        this.candiesPerPerson.push(candiesPerPerson);
       }
     })
   }

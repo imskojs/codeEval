@@ -18,8 +18,8 @@ var TrickOrTreat = (function () {
                 var houseCount = Number(custumes[3].split(': ')[1]);
                 var totalKidCount = vampireCount + zombieCount + witchCount;
                 var totalCandieCount = (vampireCount * 3 + zombieCount * 4 + witchCount * 5) * houseCount;
-                var cadiesPerPerson = totalCandieCount / totalKidCount;
-                _this.candiesPerPerson.push(cadiesPerPerson);
+                var candiesPerPerson = totalCandieCount / totalKidCount;
+                _this.candiesPerPerson.push(candiesPerPerson);
             }
         });
     };
