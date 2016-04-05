@@ -11,13 +11,14 @@ var MultiplesOfANumber = (function () {
         var _this = this;
         this.questions.forEach(function (question) {
             if (question !== '') {
-                var questionArray = question.split(',');
-                var x = Number(questionArray[0]);
-                var n = Number(questionArray[1]);
-                while (x > n) {
-                    n *= 2;
+                var all = question.split(',');
+                var first = Number(all[0]);
+                var second = Number(all[1]);
+                var total = 0;
+                while (total < first) {
+                    total += second;
                 }
-                _this.smallestNs.push(n);
+                _this.smallestNs.push(total);
             }
         });
     };

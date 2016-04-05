@@ -16,13 +16,14 @@ class MultiplesOfANumber {
   setSmallestNs(): void {
     this.questions.forEach((question) => {
       if(question !== ''){
-        let questionArray: Array<string> = question.split(',');
-        let x: number = Number(questionArray[0]);
-        let n: number = Number(questionArray[1]);
-        while(x > n){
-          n *= 2;
+        let all: Array<string> = question.split(',');
+        let first: number = Number(all[0]);
+        let second: number = Number(all[1]);
+        let total: number = 0;
+        while(total < first){
+          total += second;
         }
-        this.smallestNs.push(n);
+        this.smallestNs.push(total);
       }
     })
   }
