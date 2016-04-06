@@ -17,7 +17,7 @@ class LowerCase {
     this.questions = this.rawData.split('\n');
   }
 
-  toLowerCase(): void {
+  setLowerCases(): void {
     this.questions.forEach((question) => {
       if(question !== '') {
         this.lowerCases.push(question.toLowerCase())
@@ -34,5 +34,5 @@ class LowerCase {
 }
 
 let lowerCase = new LowerCase(process.argv[2]);
-lowerCase.toLowerCase();
+lowerCase.setLowerCases();
 lowerCase.print();

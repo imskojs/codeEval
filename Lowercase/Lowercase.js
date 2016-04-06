@@ -7,7 +7,7 @@ var LowerCase = (function () {
         this.rawData = fs.readFileSync(filename).toString();
         this.questions = this.rawData.split('\n');
     }
-    LowerCase.prototype.toLowerCase = function () {
+    LowerCase.prototype.setLowerCases = function () {
         var _this = this;
         this.questions.forEach(function (question) {
             if (question !== '') {
@@ -23,5 +23,5 @@ var LowerCase = (function () {
     return LowerCase;
 }());
 var lowerCase = new LowerCase(process.argv[2]);
-lowerCase.toLowerCase();
+lowerCase.setLowerCases();
 lowerCase.print();
