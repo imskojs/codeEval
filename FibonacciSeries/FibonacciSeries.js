@@ -23,12 +23,16 @@ var FibonacciSeries = (function () {
         });
     };
     FibonacciSeries.prototype.print = function () {
-        this.answers.forEach(function (answer) {
-            console.log(answer);
+        var _this = this;
+        this.questions.forEach(function (question) {
+            console.log(_this.fibonacci(question));
         });
+        // this.answers.forEach((answer: number): void => {
+        //   console.log(answer);
+        // })
     };
     return FibonacciSeries;
 }());
 var fibonacciSeries = new FibonacciSeries(process.argv[2]);
-fibonacciSeries.setAnswer();
+// fibonacciSeries.setAnswer()
 fibonacciSeries.print();

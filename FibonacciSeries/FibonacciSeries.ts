@@ -30,13 +30,16 @@ class FibonacciSeries {
   }
 
   print(): void {
-    this.answers.forEach((answer: number): void => {
-      console.log(answer);
+    this.questions.forEach((question: number): void =>{
+       console.log(this.fibonacci(question));
     })
+    // this.answers.forEach((answer: number): void => {
+    //   console.log(answer);
+    // })
   }
 }
 
 let fibonacciSeries: FibonacciSeries = 
   new FibonacciSeries(process.argv[2]);
-fibonacciSeries.setAnswer()
+// fibonacciSeries.setAnswer()
 fibonacciSeries.print();
